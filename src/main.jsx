@@ -7,7 +7,7 @@ import theme from './theme.js'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <CssVarsProvider theme={theme}>
+    <CssVarsProvider theme={theme} attribute="data-mui-color-scheme" >
       <CssBaseline />
       <App />
     </CssVarsProvider>

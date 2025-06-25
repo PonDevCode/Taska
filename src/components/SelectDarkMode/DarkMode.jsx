@@ -30,21 +30,18 @@ const DarkMode = () => {
   if (!mode) return null;
   return (
     <div><FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="select-dark-mode" sx={{fontSize:'14px'}}>Mode</InputLabel>
+      <InputLabel id="select-dark-mode" size='small'>Mode</InputLabel>
       <Select
         labelId="select-dark-mode"
         id="demo-select-small"
         value={mode}
         label="Status"
-        onChange={handleChange}
-        sx={{
-          fontSize: '12px',
-          height: 32,
-        }}
+        onChange={handleChange} 
+        size='small'
       >
         {themeData.map((item, i) => {
           return (
-            <MenuItem sx={{ fontSize: '10px', py: 0.5 }} value={item.status} key={i}>
+            <MenuItem size='small' value={item.status} key={i}>
               <Box sx={{ display: 'flex', justifyItems: 'center', gap: 1 }}>
                 {icon[item.icon]}{item.status}
               </Box>
