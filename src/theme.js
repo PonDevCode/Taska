@@ -1,16 +1,20 @@
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
 
+const APP_BAR_HEIGHT = '58px'
+const BOARD_BAR_HEIGHT = '48px'
+const BOARD_CONTENT_HEIGHT = `calc(100vh - ${APP_BAR_HEIGHT} - ${BOARD_BAR_HEIGHT})`
 
 const theme = extendTheme({
   taskaCustom: {
-    appBarHeight: '58px',
-    boorBarHeight: '40px'
+    AppBarHeight: APP_BAR_HEIGHT,
+    BoardBarHeight: BOARD_BAR_HEIGHT,
+    BoardContentHeight: BOARD_CONTENT_HEIGHT
   },
   colorSchemes: {
     light: {
       palette: {
         primary: {
-          main: '#00FA9A', // màu chữ chính
+          main: '#4b7bec', // màu chữ chính
         },
         secondary: {
           main: '#7388C1', // màu nền
@@ -46,16 +50,16 @@ const theme = extendTheme({
       styleOverrides: {
         body: {
            overflowY: 'hidden', 
-          '& *::-webkit-scrollbar':{
-            with: '8px',
-            height:'8px'
+          '*::-webkit-scrollbar':{
+            width: '6px',
+            height:'6px'
           },
-          '& *::-webkit-scrollbar-thumb':{
-            backgroundColor: 'gray',
+          '*::-webkit-scrollbar-thumb':{
+            backgroundColor: '#ced0da',
             borderRadius: '8px',
           },
-           '& *::-webkit-scrollbar-thumb:hover' :{
-            backgroundColor: 'red',
+           '*::-webkit-scrollbar-thumb:hover' :{
+            backgroundColor: '#ced0da',
             borderRadius: '8px',
             cursor:'pointer'
           }
@@ -68,6 +72,15 @@ const theme = extendTheme({
           textTransform: 'none',
           color: 'white',
           fontSize: '12px'
+        },
+      },
+    },
+   MuiTypography: {
+      styleOverrides: {
+        root: {
+          '&.MuiTypography-body1':{
+            fontSize: '12px',
+          }
         },
       },
     },

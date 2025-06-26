@@ -31,22 +31,22 @@ export const BoardBar = () => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
     let bgcl = ''
     if (mode === 'dark') {
-        bgcl = '#2c3e50'
+        bgcl = 'dark'
     } else if (mode === 'light') {
-        bgcl = '#01a3a4'
+        bgcl = 'light'
     } else {
         if (prefersDarkMode) {
-            bgcl = '#2c3e50'
+            bgcl = 'dark'
         } else {
-            bgcl = '#01a3a4'
+            bgcl = 'light'
         }
     }
     return (
         <div>
             <Box sx={{
-                bgcolor: bgcl,
+                bgcolor: bgcl === 'dark' ? '#636e72' : '#18dcff',
                 width: '100%',
-                height: (theme) => theme.taskaCustom.boorBarHeight,
+                height: (theme) => theme.taskaCustom.BoardBarHeight,
                 display: 'flex',
                 alignItems: 'center',
                 justifyItems: 'center',
@@ -55,13 +55,15 @@ export const BoardBar = () => {
                 gap: 2,
                 overflow: 'hidden',
                 overflowX: 'auto',
+                borderBottom: 2,
+                borderColor:'white'
             }}>
                 <Box sx={{ display: 'flex', justifyItems: 'center', alignItems: 'center', gap: 1 }}>
                     {
                         BoardData.map((item, i) => {
                             return (
                                 <Tooltip title={item.title} key={i}>
-                                    <Chip  
+                                    <Chip
                                         icon={icon[item.icon]}
                                         label={item.title}
                                         onClick={() => { }}
@@ -73,9 +75,9 @@ export const BoardBar = () => {
                                             borderRadius: '4px',
                                             fontSize: '12px',
                                             backgroundColor: 'transparent',
-                                            '& .MuiSvgIcon-root': {color: 'white',fontSize: '14px'},
-                                            "&:hover": {bgcolor: '#dfe6e9', color:'black'},
-                                            "&:hover .MuiSvgIcon-root": { color:'black'}
+                                            '& .MuiSvgIcon-root': { color: 'white', fontSize: '14px' },
+                                            "&:hover": { bgcolor: '#dfe6e9', color: 'black' },
+                                            "&:hover .MuiSvgIcon-root": { color: 'black' }
                                         }}
                                     />
                                 </Tooltip>
@@ -89,7 +91,7 @@ export const BoardBar = () => {
                         startIcon={<PersonAddIcon />}
                         sx={{
                             height: 25,
-                            color:'white',
+                            color: 'white',
                             borderColor: 'white'
                         }}
                     >

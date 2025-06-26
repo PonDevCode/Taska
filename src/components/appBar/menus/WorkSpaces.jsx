@@ -11,6 +11,7 @@ import ContentCopy from '@mui/icons-material/ContentCopy';
 import ContentPaste from '@mui/icons-material/ContentPaste';
 import Cloud from '@mui/icons-material/Cloud';
 import Divider from '@mui/material/Divider';
+import Box from '@mui/system/Box';
 const WorkSpaces = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -21,7 +22,7 @@ const WorkSpaces = () => {
         setAnchorEl(null);
     };
     return (
-        <div>
+        <Box>
             <div>
                 <Button
                     id="workspace-basic"
@@ -82,7 +83,7 @@ const WorkSpaces = () => {
                     </MenuItem>
                 </Menu>
             </div>
-        </div>
+        </Box>
     )
 }
 

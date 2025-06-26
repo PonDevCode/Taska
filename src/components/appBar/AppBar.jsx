@@ -24,22 +24,22 @@ const AppBar = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   let bgcl = ''
   if (mode === 'dark') {
-    bgcl = '#2c3e50'
+    bgcl = 'dark'
   } else if (mode === 'light') {
-    bgcl = '#01a3a4'
+    bgcl = 'light'
   } else {
     if (prefersDarkMode) {
-      bgcl = '#2c3e50'
+      bgcl = 'dark'
     } else {
-      bgcl = '#01a3a4'
+      bgcl = 'light'
     }
   }
   return (
     <div>
       <Box sx={{
-        bgcolor: bgcl,
+        bgcolor: bgcl === 'dark' ? '#2c3e50' :'  #17c0eb',
         width: '100%',
-        height: (theme) => theme.taskaCustom.appBarHeight,
+        height: (theme) => theme.taskaCustom.AppBarHeight,
         display: 'flex',
         alignItems: 'center',
         justifyItems: 'center',
@@ -49,8 +49,6 @@ const AppBar = () => {
         gap: 1,
         overflow: 'hidden',
         overflowX: 'auto',
-        borderBottom: 2,
-        borderColor: 'white'
       }}>
         <Box sx={{ color: 'white', display: 'flex', justifyItems: 'center', alignItems: 'center' }}>
           <PictureInPictureIcon />
