@@ -55,8 +55,7 @@ export const BoardBar = () => {
                 gap: 2,
                 overflow: 'hidden',
                 overflowX: 'auto',
-                borderBottom: 2,
-                borderColor:'white'
+                
             }}>
                 <Box sx={{ display: 'flex', justifyItems: 'center', alignItems: 'center', gap: 1 }}>
                     {
