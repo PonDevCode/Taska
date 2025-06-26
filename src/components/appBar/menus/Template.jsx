@@ -28,9 +28,11 @@ const Template = () => {
                     id="Template-basic"
                     aria-controls={open ? 'menu-Template' : undefined}
                     aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
+                    aria-expanded={open ? 'true' : 'false'}
                     onClick={handleClick}
                     endIcon={<KeyboardArrowDownIcon />}
+                    sx={{color: 'white'}}
+                    
                 >
                     Templates
                 </Button>

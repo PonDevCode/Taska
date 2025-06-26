@@ -27,9 +27,10 @@ const WorkSpaces = () => {
                     id="workspace-basic"
                     aria-controls={open ? 'menu-workspace' : undefined}
                     aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
+                    aria-expanded={open ? 'true' : 'false'}
                     onClick={handleClick}
                     endIcon={<KeyboardArrowDownIcon />}
+                    sx={{color: 'white'}}
                 >
                     WorkSpaces
                 </Button>
@@ -43,6 +44,7 @@ const WorkSpaces = () => {
                             'aria-labelledby': 'workspace-basic',
                         },
                     }}
+                     sx={{color: 'white'}}
                 >
                     <MenuItem onClick={handleClose}>
                         <ListItemIcon>

@@ -3,8 +3,8 @@ import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
 
 const theme = extendTheme({
   taskaCustom: {
-    appBarHeight: '68px',
-    boorBarHeight: '60px'
+    appBarHeight: '58px',
+    boorBarHeight: '40px'
   },
   colorSchemes: {
     light: {
@@ -34,7 +34,11 @@ const theme = extendTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          color: 'var(--mui-palette-primary-main)'
+          textTransform: 'none',
+          borderWidth:'0.5px',
+          '&:hover':{
+            borderWidth:'0.5px'
+          }
         }
       },
     },
@@ -47,8 +51,13 @@ const theme = extendTheme({
             height:'8px'
           },
           '& *::-webkit-scrollbar-thumb':{
+            backgroundColor: 'gray',
+            borderRadius: '8px',
+          },
+           '& *::-webkit-scrollbar-thumb:hover' :{
             backgroundColor: 'red',
             borderRadius: '8px',
+            cursor:'pointer'
           }
         }
       }
@@ -57,7 +66,7 @@ const theme = extendTheme({
       styleOverrides: {
         root: {
           textTransform: 'none',
-          color: 'var(--mui-palette-primary-main)',
+          color: 'white',
           fontSize: '12px'
         },
       },
@@ -65,21 +74,19 @@ const theme = extendTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          color: 'var(--mui-palette-primary-main)',
+          // color: 'white',
           fontSize: '0.8rem',
           '.MuiOutlinedInput-notchedOutline': {
-            borderColor: 'var(--mui-palette-primary-main)'
+            borderColor: 'white'
           },
           '&:hover': {
             '.MuiOutlinedInput-notchedOutline': {
-              borderColor: 'var(--mui-palette-primary-main)'
+              borderColor: 'white'
             },
-
             '& fieldset': {
-              color: 'var(--mui-palette-primary-main)',
+              color: 'white',
               borderWidth: '1px !important'
             }
-
           }
         }
       }

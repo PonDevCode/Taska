@@ -28,9 +28,11 @@ const Recent = () => {
                     id="recent-basic"
                     aria-controls={open ? 'menu-recent' : undefined}
                     aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
+                    aria-expanded={open ? 'true' : 'false'}
                     onClick={handleClick}
                     endIcon={<KeyboardArrowDownIcon />}
+                    sx={{color: 'white'}}
+
                 >
                     Rencent
                 </Button>

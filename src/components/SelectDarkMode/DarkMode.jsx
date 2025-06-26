@@ -29,27 +29,51 @@ const DarkMode = () => {
   };
   if (!mode) return null;
   return (
-    <div><FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="select-dark-mode" size='small'>Mode</InputLabel>
-      <Select
-        labelId="select-dark-mode"
-        id="demo-select-small"
-        value={mode}
-        label="Status"
-        onChange={handleChange} 
-        size='small'
-      >
-        {themeData.map((item, i) => {
-          return (
-            <MenuItem size='small' value={item.status} key={i}>
-              <Box sx={{ display: 'flex', justifyItems: 'center', gap: 1 }}>
-                {icon[item.icon]}{item.status}
-              </Box>
-            </MenuItem>
-          )
-        })}
-      </Select>
-    </FormControl>
+    <div>
+      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+        <InputLabel
+          id="select-dark-mode"
+          size='small'
+          sx={{
+            color: 'white',
+            '&.Mui-focused': {
+              color: 'white',
+            },
+          }} >
+          Mode
+        </InputLabel>
+        <Select
+          labelId="select-dark-mode"
+          id="demo-select-small"
+          value={mode}
+          label="Status"
+          onChange={handleChange}
+          size='small'
+          MenuProps={{
+            PaperProps: {
+              sx: {
+                backgroundColor: '#121212',
+                color: 'white',             
+              },
+            },
+          }}
+          sx={{
+            '& .MuiOutlinedInput-notchedOutline': {borderColor: 'white',},
+            '&:hover .MuiOutlinedInput-notchedOutline': {borderColor: 'white',},
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {borderColor: 'white',},
+          }}
+        >
+          {themeData.map((item, i) => {
+            return (
+              <MenuItem size='small' value={item.status} key={i}>
+                <Box sx={{ display: 'flex', justifyItems: 'center', gap: 1, color: 'white' }}>
+                  {icon[item.icon]}{item.status}
+                </Box>
+              </MenuItem>
+            )
+          })}
+        </Select>
+      </FormControl>
     </div>
   )
 }

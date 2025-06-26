@@ -28,9 +28,11 @@ const Starrted = () => {
                     id="Starrted-basic"
                     aria-controls={open ? 'menu-Starrted' : undefined}
                     aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
+                    aria-expanded={open ? 'true' : 'false'}
                     onClick={handleClick}
                     endIcon={<KeyboardArrowDownIcon />}
+                    sx={{color: 'white'}}
+
                 >
                     Starred
                 </Button>

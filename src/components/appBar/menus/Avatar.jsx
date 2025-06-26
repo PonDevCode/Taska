@@ -35,19 +35,23 @@ const Avata = () => {
                 ref={anchorRef}
                 id="composition-button"
                 aria-controls={open ? 'composition-menu' : undefined}
-                aria-expanded={open ? 'true' : undefined}
+                aria-expanded={open ? 'true' : 'false'}
                 aria-haspopup="true"
                 onClick={handleToggle}
             >
-                <Avatar alt="Cindy Baker" src={Avt} sx={{height:'32px', width:'32px'}} />
+                <Avatar alt="Cindy Baker" src={Avt} sx={{ height: '32px', width: '32px' }} />
             </Stack>
             <Popper
                 open={open}
                 anchorEl={anchorRef.current}
-
                 placement="bottom-start"
                 transition
                 disablePortal
+                sx={{
+                    paddingTop:'5px',
+                    paddingRight:'10px',
+                    zIndex: 2000
+                }}
             >
                 {({ TransitionProps, placement }) => (
                     <Grow
