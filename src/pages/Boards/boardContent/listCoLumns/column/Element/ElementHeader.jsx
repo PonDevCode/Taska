@@ -15,8 +15,9 @@ import Divider from '@mui/material/Divider';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import { useAnchorElement } from './HandlElement';
-const ElementHeader = () => {
+const ElementHeader = ({column}) => {
 
+    
     const COLUM_HEADER_HEIGHT = '50px';
     const {anchorEl, open, handleClick, handleClose} = useAnchorElement()
     return (
@@ -34,7 +35,7 @@ const ElementHeader = () => {
                         cursor: 'pointer'
                     }}
                 >
-                    Column Title
+                    {column.title}
                 </Typography>
                 <Box>
                     <div>
@@ -49,7 +50,6 @@ const ElementHeader = () => {
                                 aria-haspopup="true"
                                 aria-expanded={open ? 'true' : 'false'}
                                 onClick={handleClick}
-                                endIcon={<KeyboardArrowDownIcon />}
                             />
                         </Tooltip>
                         <Menu

@@ -1,7 +1,8 @@
 import React from 'react'
 import Box from '@mui/system/Box';
 import Card from '../Card/Card';
-const ElementContent = () => {
+const ElementContent = ({cards}) => {
+    
     const COLUM_HEADER_HEIGHT = '50px';
     const COLUM_FOOTER_HEIGHT = '50px';
     return (
@@ -17,11 +18,13 @@ const ElementContent = () => {
             '&::-webkit-scrollbar-thumb': { backgroundColor: '#ced0da', borderRadius: '8px', },
             '&::-webkit-scrollbar-thumb:hover': { backgroundColor: '#ced0da', borderRadius: '8px', cursor: 'pointer' }
         }}>
-            <Card />
-            <Card hiddenMedia/>
-            <Card hiddenMedia />
-            <Card />
-
+            {
+                cards.map((card , i)=>{{
+                    return(
+                        <Card card={card} key={i} />
+                    )
+                }})
+            }
         </Box>
     )
 }

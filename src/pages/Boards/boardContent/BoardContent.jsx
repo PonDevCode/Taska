@@ -1,33 +1,58 @@
-import React from 'react'
-import { Box, useMediaQuery } from '@mui/system';
-import { useColorScheme } from '@mui/material';
+import React, { useEffect, useState } from 'react'
+import { Box } from '@mui/system';
 import LisColumns from './listCoLumns/LisColumns';
-const BoardContent = () => {
-  const { mode } = useColorScheme();
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  let bgcl = ''
-  if (mode === 'dark') {
-    bgcl = 'dark'
-  } else if (mode === 'light') {
-    bgcl = 'light'
-  } else {
-    if (prefersDarkMode) {
-      bgcl = 'dark'
-    } else {
-      bgcl = 'light'
+import { mapOrder } from '~/utils/sort.js'
+import { 
+  DndContext,
+  PointerSensor,
+  useSensor,
+  useSensors
+
+ } from '@dnd-kit/core';
+import { useDarkMode } from '~/utils/statusDarkmode'
+import {
+  arrayMove,
+} from '@dnd-kit/sortable';
+const BoardContent = ({ Board }) => {
+  const status = useDarkMode()
+
+  const pointerSensor=useSensor(PointerSensor,{activationConstraint: {distance:10}})
+  const sensor=useSensors(pointerSensor)
+
+  const [orderedArray, setOderedArray] = useState([])
+
+  useEffect(() => {
+    setOderedArray(mapOrder(Board.columns, Board.columnOrderIds, '_id'))
+  }, [Board])
+
+
+
+  const handleDragEnd = (event) => {
+    console.log(event);
+    
+
+    const { active, over } = event
+    if(!over) return
+    if (active.id !== over.id) {
+      const oldIndex = orderedArray.findIndex(c => c._id === active.id)
+      const newIndex = orderedArray.findIndex(c => c._id === over.id)
+      setOderedArray(arrayMove(orderedArray, oldIndex, newIndex))
     }
+
   }
+
   return (
-    <Box sx={{
-      backgroundColor: bgcl === 'dark' ? '#2c3e50' : '  #18dcff',
-      width: '100%',
-      height: (theme) => theme.taskaCustom.BoardContentHeight,
-      padding: '10px',
+    <DndContext onDragEnd={handleDragEnd} sensors={sensor}>
+      <Box sx={{
+        backgroundColor: status === 'dark' ? '#2c3e50' : '  #18dcff',
+        width: '100%',
+        height: (theme) => theme.taskaCustom.BoardContentHeight,
+        padding: '10px',
+      }}>
 
-    }}>
-
-      <LisColumns />
-    </Box>
+        <LisColumns listColumn={orderedArray} />
+      </Box>
+    </DndContext>
   )
 }
 

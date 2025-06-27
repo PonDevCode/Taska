@@ -1,10 +1,11 @@
+import { mockData } from "~/apis/mock-data"
 export const BoardData = [
     {
-        title:'With Icon',
+        title: mockData.board.title,
         icon: 'icon1'
     },
     {
-        title:'Public/Private Workspace',
+        title:mockData.board.type,
         icon: 'icon2'
     },
     {

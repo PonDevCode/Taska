@@ -14,30 +14,17 @@ import Tooltip from '@mui/material/Tooltip';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Avata from './menus/Avatar';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
-import { useColorScheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-const AppBar = () => {
 
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import { useDarkMode } from '~/utils/statusDarkmode';
+const AppBar = () => {
+  const status = useDarkMode()
   const [textSeach, setTextSeach] = useState('')
-  const { mode } = useColorScheme();
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  let bgcl = ''
-  if (mode === 'dark') {
-    bgcl = 'dark'
-  } else if (mode === 'light') {
-    bgcl = 'light'
-  } else {
-    if (prefersDarkMode) {
-      bgcl = 'dark'
-    } else {
-      bgcl = 'light'
-    }
-  }
+ 
   return (
     <div>
       <Box sx={{
-        bgcolor: bgcl === 'dark' ? '#2c3e50' :'  #17c0eb',
+        bgcolor: status === 'dark' ? '#2c3e50' :'  #17c0eb',
         width: '100%',
         height: (theme) => theme.taskaCustom.AppBarHeight,
         display: 'flex',

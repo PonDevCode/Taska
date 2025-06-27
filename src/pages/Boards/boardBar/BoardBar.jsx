@@ -9,8 +9,9 @@ import AddToDriveIcon from '@mui/icons-material/AddToDrive';
 import FilterDramaIcon from '@mui/icons-material/FilterDrama';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { BoardData } from './constant';
-import { Avatar, AvatarGroup, Button, Tooltip, useColorScheme, useMediaQuery } from '@mui/material';
-
+import { Avatar, AvatarGroup, Button, Tooltip} from '@mui/material';
+import {capitalizeFirstLetter} from '~/utils/formatter'
+import { useDarkMode } from '~/utils/statusDarkmode';
 const icon = {
     icon1: (
         <GridViewIcon sx={{ color: 'white' }} />
@@ -27,24 +28,14 @@ const icon = {
 }
 
 export const BoardBar = () => {
-    const { mode } = useColorScheme();
-    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-    let bgcl = ''
-    if (mode === 'dark') {
-        bgcl = 'dark'
-    } else if (mode === 'light') {
-        bgcl = 'light'
-    } else {
-        if (prefersDarkMode) {
-            bgcl = 'dark'
-        } else {
-            bgcl = 'light'
-        }
-    }
+
+  const status = useDarkMode()
+   
+
     return (
         <div>
             <Box sx={{
-                bgcolor: bgcl === 'dark' ? '#636e72' : '#18dcff',
+                bgcolor: status === 'dark' ? '#636e72' : '#18dcff',
                 width: '100%',
                 height: (theme) => theme.taskaCustom.BoardBarHeight,
                 display: 'flex',
@@ -55,7 +46,7 @@ export const BoardBar = () => {
                 gap: 2,
                 overflow: 'hidden',
                 overflowX: 'auto',
-                
+
             }}>
                 <Box sx={{ display: 'flex', justifyItems: 'center', alignItems: 'center', gap: 1 }}>
                     {
@@ -64,7 +55,7 @@ export const BoardBar = () => {
                                 <Tooltip title={item.title} key={i}>
                                     <Chip
                                         icon={icon[item.icon]}
-                                        label={item.title}
+                                        label={capitalizeFirstLetter(item.title)}
                                         onClick={() => { }}
                                         sx={{
                                             height: 30,
