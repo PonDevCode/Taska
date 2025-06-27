@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Box } from '@mui/system';
 import LisColumns from './listCoLumns/LisColumns';
 import { mapOrder } from '~/utils/sort.js'
-import { 
+import {
   DndContext,
   PointerSensor,
+  MouseSensor,
+  TouchSensor,
   useSensor,
   useSensors
 
- } from '@dnd-kit/core';
+} from '@dnd-kit/core';
 import { useDarkMode } from '~/utils/statusDarkmode'
 import {
   arrayMove,
@@ -16,8 +18,13 @@ import {
 const BoardContent = ({ Board }) => {
   const status = useDarkMode()
 
-  const pointerSensor=useSensor(PointerSensor,{activationConstraint: {distance:10}})
-  const sensor=useSensors(pointerSensor)
+  // const pointerSensor=useSensor(PointerSensor,{activationConstraint: {distance:10}})
+  const mouseSensor = useSensor(MouseSensor, { activationConstraint: { distance: 10 } })
+  const touchSensor = useSensor(TouchSensor, { activationConstraint: { delay: 250, tolerance: 5 } })
+
+
+  // const sensor=useSensors(pointerSensor)
+  const sensor = useSensors(mouseSensor, touchSensor)
 
   const [orderedArray, setOderedArray] = useState([])
 
@@ -29,10 +36,10 @@ const BoardContent = ({ Board }) => {
 
   const handleDragEnd = (event) => {
     console.log(event);
-    
+
 
     const { active, over } = event
-    if(!over) return
+    if (!over) return
     if (active.id !== over.id) {
       const oldIndex = orderedArray.findIndex(c => c._id === active.id)
       const newIndex = orderedArray.findIndex(c => c._id === over.id)
