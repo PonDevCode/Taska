@@ -13,6 +13,7 @@ const Column = ({ column }) => {
   const { attributes, listeners, setNodeRef, transform, transition, } = useSortable({ id: column._id, data: { ...column } });
 
   const dndKitColumnStyle = {
+    touchAction: 'none',
     transform: CSS.Translate.toString(transform),
     transition,
   };
