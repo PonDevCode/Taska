@@ -9,8 +9,8 @@ import AddToDriveIcon from '@mui/icons-material/AddToDrive';
 import FilterDramaIcon from '@mui/icons-material/FilterDrama';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { BoardData } from './constant';
-import { Avatar, AvatarGroup, Button, Tooltip} from '@mui/material';
-import {capitalizeFirstLetter} from '~/utils/formatter'
+import { Avatar, AvatarGroup, Button, Tooltip } from '@mui/material';
+import { capitalizeFirstLetter } from '~/utils/formatter'
 import { useDarkMode } from '~/utils/statusDarkmode';
 const icon = {
     icon1: (
@@ -27,11 +27,9 @@ const icon = {
     )
 }
 
-export const BoardBar = () => {
+export const BoardBar = (board) => {
 
-  const status = useDarkMode()
-   
-
+    const status = useDarkMode()
     return (
         <div>
             <Box sx={{
@@ -49,13 +47,51 @@ export const BoardBar = () => {
 
             }}>
                 <Box sx={{ display: 'flex', justifyItems: 'center', alignItems: 'center', gap: 1 }}>
+                    <Tooltip title={board?.Board?.title} >
+                        <Chip
+                            icon={<GridViewIcon sx={{ color: 'white' }} />}
+                            label={capitalizeFirstLetter(board?.Board?.title)}
+                            onClick={() => { }}
+                            sx={{
+                                height: 30,
+                                color: 'white',
+                                border: 'none',
+                                paddingX: '15px',
+                                borderRadius: '4px',
+                                fontSize: '12px',
+                                backgroundColor: 'transparent',
+                                '& .MuiSvgIcon-root': { color: 'white', fontSize: '14px' },
+                                "&:hover": { bgcolor: '#dfe6e9', color: 'black' },
+                                "&:hover .MuiSvgIcon-root": { color: 'black' }
+                            }}
+                        />
+                    </Tooltip>
+                    <Tooltip title={board?.Board?.type} >
+                        <Chip
+                            icon={<VpnLockIcon sx={{ color: 'white' }} />}
+                            label={capitalizeFirstLetter(board?.Board?.type)}
+                            onClick={() => { }}
+                            sx={{
+                                height: 30,
+                                color: 'white',
+                                border: 'none',
+                                paddingX: '15px',
+                                borderRadius: '4px',
+                                fontSize: '12px',
+                                backgroundColor: 'transparent',
+                                '& .MuiSvgIcon-root': { color: 'white', fontSize: '14px' },
+                                "&:hover": { bgcolor: '#dfe6e9', color: 'black' },
+                                "&:hover .MuiSvgIcon-root": { color: 'black' }
+                            }}
+                        />
+                    </Tooltip>
                     {
                         BoardData.map((item, i) => {
                             return (
                                 <Tooltip title={item.title} key={i}>
                                     <Chip
                                         icon={icon[item.icon]}
-                                        label={capitalizeFirstLetter(item.title)}
+                                        label={capitalizeFirstLetter(item?.title)}
                                         onClick={() => { }}
                                         sx={{
                                             height: 30,

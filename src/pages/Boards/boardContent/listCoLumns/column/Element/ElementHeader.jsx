@@ -15,11 +15,9 @@ import Divider from '@mui/material/Divider';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import { useAnchorElement } from './HandlElement';
-const ElementHeader = ({column}) => {
-
-    
+const ElementHeader = ({ column,toggleOpenCard, handleDeleteColumn }) => {
     const COLUM_HEADER_HEIGHT = '50px';
-    const {anchorEl, open, handleClick, handleClose} = useAnchorElement()
+    const { anchorEl, open, handleClick, handleClose } = useAnchorElement()
     return (
         <div>
             <Box sx={{
@@ -57,6 +55,7 @@ const ElementHeader = ({column}) => {
                             anchorEl={anchorEl}
                             open={open}
                             onClose={handleClose}
+                            onClick={handleClose}
                             slotProps={{
                                 list: {
                                     'aria-labelledby': 'column-basic-dropdown',
@@ -64,8 +63,18 @@ const ElementHeader = ({column}) => {
                             }}
                             sx={{ color: 'white' }}
                         >
-                            <MenuItem onClick={handleClose}>
-                                <ListItemIcon><AddCardIcon fontSize="small" /></ListItemIcon>
+                            <MenuItem 
+                            onClick={toggleOpenCard}
+                            sx={{
+                                    '&:hover': {
+                                        color: 'success.light',
+                                        '& .Add-Card-Icon':{
+                                            color:'success.light'
+                                        }
+                                    }
+                                }}
+                            >
+                                <ListItemIcon><AddCardIcon className='Add-Card-Icon' fontSize="small" /></ListItemIcon>
                                 <ListItemText>App new card</ListItemText>
                             </MenuItem>
                             <MenuItem onClick={handleClose}>
@@ -81,8 +90,19 @@ const ElementHeader = ({column}) => {
                                 <ListItemText>Paste</ListItemText>
                             </MenuItem>
                             <Divider />
-                            <MenuItem onClick={handleClose}>
-                                <ListItemIcon><DeleteForeverIcon fontSize="small" /></ListItemIcon>
+                            <MenuItem
+                                onClick={handleDeleteColumn}
+                                sx={{
+                                    '&:hover': {
+                                        color: 'warning.dark',
+                                        '& .Delete-Forever-Icon':{
+                                            color:'warning.dark'
+                                        }
+                                    }
+                                }}
+
+                            >
+                                <ListItemIcon><DeleteForeverIcon className='Delete-Forever-Icon' fontSize="small" /></ListItemIcon>
                                 <ListItemText>Remove this column</ListItemText>
                             </MenuItem>
                             <MenuItem onClick={handleClose}>

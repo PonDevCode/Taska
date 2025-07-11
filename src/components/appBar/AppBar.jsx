@@ -20,11 +20,11 @@ import { useDarkMode } from '~/utils/statusDarkmode';
 const AppBar = () => {
   const status = useDarkMode()
   const [textSeach, setTextSeach] = useState('')
- 
+
   return (
     <div>
       <Box sx={{
-        bgcolor: status === 'dark' ? '#2c3e50' :'  #17c0eb',
+        bgcolor: status === 'dark' ? '#2c3e50' : '  #17c0eb',
         width: '100%',
         height: (theme) => theme.taskaCustom.AppBarHeight,
         display: 'flex',
@@ -41,7 +41,7 @@ const AppBar = () => {
           <PictureInPictureIcon />
           <Typography sx={{ color: 'white' }} >Taska</Typography>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
-            <WorkSpaces  />
+            <WorkSpaces />
             <Recent />
             <Starrted />
             <Template />
@@ -78,33 +78,22 @@ const AppBar = () => {
               backgroundColor: 'transparent',
               minWidth: 120,
               maxWidth: 170,
-              '.outlined-search': {
-                backgroundColor: 'none'
-              },
+              '.outlined-search': { backgroundColor: 'none' },
               '& .MuiOutlinedInput-root': {
                 color: 'white',
-           
                 '& fieldset': {
                   borderColor: 'white',
                 },
-                '&:hover':{
-                  cursor: 'pointer'
-                },
-                '&:hover fieldset': {
-                  borderColor: 'white',
-                },
+                '&:hover': { cursor: 'pointer' },
+                '&:hover fieldset': { borderColor: 'white', },
                 '&.Mui-focused': {
                   color: 'white',
-                  '& fieldset': {
-                    borderColor: 'white',
-                  },
+                  '& fieldset': { borderColor: 'white', },
                 },
               },
               '& .MuiInputLabel-root': {
                 color: 'white',
-                '&.Mui-focused': {
-                  color: 'white',
-                },
+                '&.Mui-focused': { color: 'white', },
               },
             }}
           />
