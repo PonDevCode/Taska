@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "cross-env VITE_BUILD_MODE=dev vite",
+    "build": "cross-env VITE_BUILD_MODE=production vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -19,6 +19,7 @@
     "@mui/material": "^7.1.2",
     "@mui/system": "^7.1.1",
     "axios": "^1.10.0",
+    "cors": "^2.8.5",
     "lodash": "^4.17.21",
     "material-ui-confirm": "^4.0.0",
     "react": "^18.2.0",
@@ -30,6 +31,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react-swc": "^3.9.0",
+    "cross-env": "^7.0.3",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
