@@ -3,7 +3,6 @@ import { Container } from '@mui/system';
 import AppBar from '~/components/appBar/AppBar';
 import { BoardBar } from './boardBar/BoardBar';
 import BoardContent from './boardContent/BoardContent';
-// import { mockData } from '~/apis/mock-data';
 import { generatePlaceholderCard } from '~/utils/formatter'
 import { mapOrder } from '~/utils/sort.js'
 import { isEmpty } from 'lodash';
@@ -118,7 +117,6 @@ const Boards = () => {
 
 
     // gọi API xử lý BE
-
     let prevCardOrderIds = dndOrderedColumn.find(c => c._id === prevColumnId)?.cardOrderIds
 
     if (prevCardOrderIds[0].includes('placeholder-card')) prevCardOrderIds = []

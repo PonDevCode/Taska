@@ -131,8 +131,6 @@ const BoardContent = ({
       console.log('triggerFrom', triggerFrom);
       // if (triggerFrom !== 'handleDragEnd') return prevColumn;
       if (triggerFrom === 'handleDragEnd') {
-
-
         moveCardDiffentColumn(
           activeDraggingCardId,
           oldColumnWhenDraggingCard._id,

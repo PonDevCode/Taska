@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Box, InputAdornment, Typography } from '@mui/material';
 import DarkMode from '../SelectDarkMode/DarkMode'
-import PictureInPictureIcon from '@mui/icons-material/PictureInPicture';
 import WorkSpaces from './menus/WorkSpaces';
 import Recent from './menus/Recent';
 import Starrted from './menus/Starred';
@@ -16,6 +15,7 @@ import Avata from './menus/Avatar';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import logo from '~/assets/image/logo.png'
 import { useDarkMode } from '~/utils/statusDarkmode';
 const AppBar = () => {
   const status = useDarkMode()
@@ -38,8 +38,7 @@ const AppBar = () => {
         overflowX: 'auto',
       }}>
         <Box sx={{ color: 'white', display: 'flex', justifyItems: 'center', alignItems: 'center' }}>
-          <PictureInPictureIcon />
-          <Typography sx={{ color: 'white' }} >Taska</Typography>
+          <img src={logo} height={80} width={80} />
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
             <WorkSpaces />
             <Recent />
