@@ -1,9 +1,9 @@
 let API = 'http://3.141.153.165:8000/'
-if (import.meta.env.VITE_BUILD_MODE === 'dev') {
-    API = 'http://localhost:8000'
-} else {
-    API = 'https://ba-taska.onrender.com'
-}
+// if (import.meta.env.VITE_BUILD_MODE === 'dev') {
+//     API = 'http://localhost:8000'
+// } else {
+//     API = 'https://ba-taska.onrender.com'
+// }
 export const API_ROOT = API
 
 
