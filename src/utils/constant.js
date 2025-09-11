@@ -1,4 +1,4 @@
-let API = 'http://3.141.153.165:8000'
+let API = 'http://localhost:8000'
 // if (import.meta.env.VITE_BUILD_MODE === 'dev') {
 //     API = 'http://localhost:8000'
 // } else {
