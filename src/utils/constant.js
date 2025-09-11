@@ -1,4 +1,4 @@
-let API = 'http://pondevcode.online'
+let API = 'https://pondevcode.online'
 // if (import.meta.env.VITE_BUILD_MODE === 'dev') {
 //     API = 'http://localhost:8000'
 // } else {
